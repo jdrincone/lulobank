@@ -45,7 +45,7 @@ class Genre(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     name = Column(String, nullable=False, unique=True)
 
-    # Relación muchos-a-muchos con shows
+    # Relación uno-a-muchos con shows
     shows = relationship("TVShow", secondary=show_genre_association, back_populates="genres")
 
     def __repr__(self):
