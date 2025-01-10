@@ -25,18 +25,19 @@ el cual activa todo el pipeline del proyecto en el siguiente orden:
   los datos para ser almacenados en `.parquet` comprimidos en `SNAPY` y luego cargados a una base de
   datos segun el modelo de entidad relación expuesto de `\figure`.
 - Modelo de datos:
-![cant_show_genero](image/modelo_datos.png)
+![image/modelo_datos.png](image/modelo_datos.png)
 - Por último, se crea el modelo de datos con un ORM y se llenan las tablas con los parquets almacenados.
  Con los datos en la BD se puede realizar algunas consultas como:
   a. Runtime promedio (averageRuntime).
   b. Conteo de shows de tv por género.
    c. Listar los dominios únicos (web) del sitio oficial de los shows.
 
-![runtime](image/cant_show_genero.png)
+![img.png](img.png)
+![image/cant_show_genero.png](image/cant_show_genero.png)
 
-![runtime](image/runtime.png)
+![image/runtime.png](image/runtime.png)
 
-![runtime](image/lista.png)
+![image/lista.png](image/lista.png)
 
 
 - Por ultimo, se generan algunos test unitarios de funciones 
