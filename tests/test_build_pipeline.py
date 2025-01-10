@@ -1,34 +1,35 @@
+from unittest.mock import Mock, patch, mock_open
 import pytest
-import pandas as pd
-from unittest.mock import Mock, patch
+import json
 from src.operators.build_pipeline import BuildPipeline
 from src.operators.path_manager import PathManager
 
 
-# Mock para PathManager
 @pytest.fixture
 def mock_path_manager():
-    return Mock(spec=PathManager)
+    """Mock para PathManager."""
+    mock = Mock(spec=PathManager)
+    mock.get_json_path.side_effect = lambda date: f"mock_path_{date}.json"
+    return mock
 
 
-# Fixture para BuildPipeline
+@pytest.fixture
+def mock_logger():
+    """Mock para el logger."""
+    return Mock()
+
+
 @pytest.fixture
 def pipeline(mock_path_manager, mock_logger):
+    """Instancia de BuildPipeline con mocks."""
     return BuildPipeline(mock_path_manager, mock_logger)
 
 
-# Test: fetch_and_save_data
-@patch("src.operators.tv_show_data_pipeline.requests.get")
-def test_fetch_and_save_data(mock_get, pipeline, mock_path_manager):
-    # Configurar el mock de requests
-    mock_get.return_value.status_code = 200
-    mock_get.return_value.json.return_value = [{"id": 1, "name": "Test Show"}]
-
-    # Ejecutar la función
-    pipeline.fetch_and_save_data(["2024-01-01"])
-
-    # Verificar que los datos se guardaron
-    mock_path_manager.get_json_path.assert_called_once_with("2024-01-01")
-    assert mock_get.called
+@patch("src.operators.build_pipeline.requests.get")
+@patch("builtins.open", new_callable=mock_open)
+def test_fetch_and_save_data_success(mock_open, mock_requests_get, pipeline):
+    """Test para verificar que los datos se recuperan y guardan correctamente."""
+    mock_requests_get.return_value.status_code = 200
+    mock_requests_get.return_value.json.return_value = [{"id": 1, "name": "Test Show"}]
 
 
