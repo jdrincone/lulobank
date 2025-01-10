@@ -40,4 +40,11 @@ c. Listar los dominios únicos (web) del sitio oficial de los shows.
 - Por último, se generan algunos test unitarios de funciones 
   del pipeline del proyecto, estos podran ejecutarsen con:
 
-`pytest .\test\test_buil_pipeline.py`
+`PYTHONPATH=$(pwd) pytest tests/test_build_pipeline.py`
+
+
+- La adición de código sigue el convensional commit y el manejo de ramas: en este caso particular,
+  dev1 para desarrollo de toda la prueba, y luego paso a master. Se pudo haber trabajado
+  con otra metología.
+- Se podria dockerizar la aplicación para que no se tenga que crear de forma manual
+  el ambiente de trabajo e instalar los requerimientos
