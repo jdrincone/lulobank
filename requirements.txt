@@ -1,0 +1,6 @@
+pandas
+sqlalchemy
+pyarrow
+requests
+pandas-profiling==3.2.0
+pytest
