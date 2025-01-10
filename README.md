@@ -28,19 +28,16 @@ el cual activa todo el pipeline del proyecto en el siguiente orden:
 ![image/modelo_datos.png](image/modelo_datos.png)
 - Por último, se crea el modelo de datos con un ORM y se llenan las tablas con los parquets almacenados.
  Con los datos en la BD se puede realizar algunas consultas como:
-  a. Runtime promedio (averageRuntime).
-  b. Conteo de shows de tv por género.
-   c. Listar los dominios únicos (web) del sitio oficial de los shows.
 
-![img.png](img.png)
+ a. Conteo de shows de tv por género.
 ![image/cant_show_genero.png](image/cant_show_genero.png)
-
+b. Runtime promedio (averageRuntime).
 ![image/runtime.png](image/runtime.png)
-
+c. Listar los dominios únicos (web) del sitio oficial de los shows.
 ![image/lista.png](image/lista.png)
 
 
-- Por ultimo, se generan algunos test unitarios de funciones 
-  del core del proyecto, estos podran ejecutarsen con:
+- Por último, se generan algunos test unitarios de funciones 
+  del pipeline del proyecto, estos podran ejecutarsen con:
 
 `pytest .\test\test_buil_pipeline.py`
